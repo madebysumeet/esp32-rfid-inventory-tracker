@@ -1,46 +1,66 @@
-Studio RFID Inventory Management System
-An open-source, real-time inventory management system designed specifically for creative studios to track valuable camera gear and employee check-outs/check-ins using RFID technology. This project combines an ESP32 microcontroller with an RFID reader, an OLED display for immediate feedback, and a powerful Supabase cloud backend with a Vercel-hosted web dashboard.
+# ESP32 RFID Inventory Tracker
 
-Features
-RFID-Based Tracking: Utilize RFID tags for quick and accurate check-out and check-in of equipment.
+🚀 A real-time inventory tracker using ESP32 + RFID + Supabase for filmmakers, content studios, or any gear-heavy teams.
 
-Real-time Updates: Transactions are instantly logged and reflected in the cloud database.
+---
 
-Immediate Hardware Feedback: Visual (LED) and auditory (Buzzer) cues provide instant confirmation of successful scans.
+## 🔧 Features
+- Scan RFID tags to check-in/check-out items
+- OLED + buzzer feedback
+- Auto-sync to Supabase DB
+- Future roadmap: live dashboard, due reminders, gear condition tagging
 
-OLED Display: Provides clear, on-device instructions and transaction status.
+---
 
-Cloud Backend (Supabase):
+## 🧠 How It Works
+1. Scan user tag
+2. Scan item tag
+3. Automatically logs the action to Supabase
+4. Edge function updates gear status in real-time
 
-Robust PostgreSQL database for storing items, users, and transaction history.
+---
 
-Secure and efficient Supabase Edge Functions for handling complex transaction logic.
+## 🛠️ Hardware Setup
+| Component | Pin |
+| --------- | --- |
+| MFRC522 SDA | GPIO5 |
+| MFRC522 SCK | GPIO18 |
+| MFRC522 MOSI | GPIO23 |
+| MFRC522 MISO | GPIO19 |
+| MFRC522 RST | GPIO33 |
+| OLED SDA    | GPIO21 |
+| OLED SCL    | GPIO22 |
+| Buzzer      | GPIO2 (D4) |
+| LED         | GPIO4 (D2) |
 
-Real-time capabilities for instant dashboard updates (requires frontend integration).
+---
 
-Web Dashboard (Vercel): A user-friendly web interface to view current inventory status, manage items and users, and review transaction history. (You will build this part using your preferred web framework).
+## 📸 Demo
 
-Open Source: Licensed under the MIT License, encouraging collaboration and customization.
+![demo-gif](link-here)
 
-🛠️ Components & Hardware Setup
-This project requires the following hardware components:
+---
 
-ESP32 Development Board: (e.g., ESP32-WROOM-32D/U)
+## 🧰 Setup
+1. Flash code via Arduino / PlatformIO
+2. Fill in your Supabase keys
+3. Deploy `sync-log-to-item` edge function
+4. You're ready to scan
 
-MFRC522 RFID Reader Module: (13.56MHz frequency)
+---
 
-RFID Tags: For your gear and employees (consider "anti-metal" tags for metallic items like camera cases).
+## 🗺️ Roadmap
+- [ ] Basic scan + log
+- [ ] Live gear dashboard (React + Supabase)
+- [ ] Due date reminders
+- [ ] Mobile view
 
-OLED Display: SH1106 128x64 pixels (I2C)
+---
 
-Buzzer: Passive buzzer
+## ❤️ Contributing
+Pull requests welcome! Hit me up if you wanna collab.
 
-LED: Standard LED (e.g., 5mm, any color)
+---
 
-Resistor: 220 Ohm for the LED (important to protect the LED!)
-
-Jumper Wires: Male-to-Male
-
-Breadboard: For prototyping connections
-
-Micro USB Cable: For ESP32 power and programming
+## 🥡 License
+MIT
